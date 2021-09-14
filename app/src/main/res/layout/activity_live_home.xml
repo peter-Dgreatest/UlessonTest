@@ -265,8 +265,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:tint="#506aac"
-        android:backgroundTint="#506aac"
         app:backgroundTint="#506aac"
         app:srcCompat="@drawable/ic_baseline_calendar_today_24"/>
 
