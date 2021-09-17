@@ -15,8 +15,16 @@ abstract class LessonDao {
     abstract fun getLiveLessons(): LiveData<List<LiveLesson>>
 
 
+    @Query("delete from livelesson")
+    abstract fun clearLiveLessons()
+
+
     @Query("select * from mylesson")
     abstract fun getMyLessons(): LiveData<List<MyLesson>>
+
+
+    @Query("delete from mylesson")
+    abstract fun clearMyLessons()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertLessonContent(vararg lesson: LiveLesson) : List<Long>

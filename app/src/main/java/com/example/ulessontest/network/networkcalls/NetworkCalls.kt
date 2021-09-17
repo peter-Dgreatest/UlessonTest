@@ -25,10 +25,7 @@ import retrofit2.http.GET
 // If you add more services, split this to multiple files and make sure to share the retrofit
 // object between services.
 
-/**
- * A retrofit service to fetch a mnetwork playlist.
- */
-interface AuthNetworkService {
+interface LessonService {
     @GET("lessons")
     fun getLiveLessons():
             Deferred<NetworkLessonContainer>
