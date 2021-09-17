@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UlessonTest</string>
+    <string name="url">https://mock-live-lessons.herokuapp.com/api/v1/</string>
 </resources>

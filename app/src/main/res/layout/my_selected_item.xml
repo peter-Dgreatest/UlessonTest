@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="ALL SUBJECTS  "
+    android:layout_marginTop="15dp"
+    android:background="@drawable/spinner_bg"
+    android:textColor="#ffff"
+    android:padding="4dp"
+    style="?android:spinnerItemStyle"
+    android:ellipsize="marquee"
+    android:drawableRight="@drawable/ic_expand_more_black_18dp"
+    android:drawableTint="#ffffff"
+    android:textSize="16sp"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
