@@ -71,9 +71,9 @@ fun TextView.bindTextColorAndText(text:String){
 }
 
 @BindingAdapter("bindButtonStyle")
-fun Button.bindButton(text: String){
-    val drawableLeft : Int
-    val bgColor : Int
+fun Button.bindButton(text: String) {
+    val drawableLeft: Int
+    val bgColor: Int
     when (text) {
         "upcoming" -> {
             drawableLeft = (R.drawable.ic_baseline_table_chart_24)
@@ -83,13 +83,13 @@ fun Button.bindButton(text: String){
             drawableLeft = (R.drawable.ic_baseline_adjust_24)
             bgColor = Color.parseColor("#BA0414")
         }
-                    else -> {
-                        drawableLeft = (R.drawable.ic_baseline_play_arrow_24)
-                        bgColor = Color.parseColor("#f9ad6d")
-                    }
-                }
+        else -> {
+            drawableLeft = (R.drawable.ic_baseline_play_arrow_24)
+            bgColor = Color.parseColor("#f9ad6d")
+        }
+    }
 
     this.text = text
     this.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, 0, 0, 0)
-    this.backgroundTintList= ColorStateList.valueOf(bgColor)
+    this.backgroundTintList = ColorStateList.valueOf(bgColor)
 }

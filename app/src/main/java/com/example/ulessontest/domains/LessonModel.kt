@@ -49,7 +49,7 @@ fun NetworkLessonContainer.asDatabasemModel(): Array<MyLesson> {
             createdAt = it.createdAt,
             expires_at = it.expires_at,
             image_url = it.image_url,
-            tutor = it.tutor.firstname,
+            tutor = it.tutor.firstname+" "+it.tutor?.lastname,
         subject = it.subject.name,
         start_at = it.start_at,
         status = it.status)
@@ -63,7 +63,7 @@ fun NetworkLessonContainer.asDatabaseModel(): Array<LiveLesson> {
             createdAt = it.createdAt,
             expires_at = it.expires_at,
             image_url = it.image_url,
-            tutor = it.tutor.firstname,
+            tutor =it.tutor.firstname+" "+it.tutor?.lastname,
             subject = it.subject.name,
             start_at = it.start_at,
             status = it.status)
