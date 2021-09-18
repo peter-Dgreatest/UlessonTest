@@ -30,7 +30,7 @@ class LiveLessonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-        val binding : ActivityLiveLessonBinding  = DataBindingUtil.setContentView(this,R.layout.activity_live_lesson)
+        val binding : ActivityLiveLessonBinding  = DataBindingUtil.setContentView<ActivityLiveLessonBinding>(this,R.layout.activity_live_lesson)
 
 
         // calling the action bar
@@ -55,7 +55,15 @@ class LiveLessonActivity : AppCompatActivity() {
         binding.recyView.adapter= lessonAdapter
 
         liveLessonViewModel.lessons.observe(this, Observer {
-            it?.let {
+            binding.cardview.visibility = if (it != null){
+                if (it?.isEmpty())
+                    View.VISIBLE
+                else
+                    View.GONE
+            } else {
+                View.VISIBLE
+            }
+            it?.apply {
                 lessonAdapter.mListRef=it
                 lessonAdapter.submitList(it)
             }

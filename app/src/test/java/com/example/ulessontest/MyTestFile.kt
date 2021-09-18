@@ -1,6 +1,5 @@
 package com.example.ulessontest
 
-import android.content.Context
 import com.example.ulessontest.database.AppDatabase
 import com.example.ulessontest.database.entities.LiveLesson
 import com.example.ulessontest.repository.LessonRepository
@@ -23,7 +22,7 @@ class MyTestFile{
     fun setUp() {
         var liveLessonActivity = LiveLessonActivity()
         database = AppDatabase.getInstance(liveLessonActivity.applicationContext)
-        lessonRepository = LessonRepository(database = database.lessonDao, application = liveLessonActivity.application)
+        lessonRepository = LessonRepository(database = database.liveLessonDao, application = liveLessonActivity.application)
     }
 
     @Test
@@ -42,11 +41,11 @@ class MyTestFile{
 
 
         // first clear database
-        database.lessonDao.clearLiveLessons()
+        database.liveLessonDao.clearLiveLessons()
 
-        database.lessonDao.insertLessonContent(livelesson)
+        database.liveLessonDao.insertLessonContent(livelesson)
 
-        var fetchedData = database.lessonDao.getLiveLessons()
+        var fetchedData = database.liveLessonDao.getLiveLessons()
 
         Assert.assertEquals(livelesson, fetchedData.value)
 
@@ -55,12 +54,12 @@ class MyTestFile{
     @Test
     fun fetchDataOnline() = runBlocking{
         // first clear database
-        database.lessonDao.clearLiveLessons()
+        database.liveLessonDao.clearLiveLessons()
         lessonRepository.getLiveLesson()
 
         // check if anything was saved assuming api return results
 
-        var fetchedData = database.lessonDao.getLiveLessons()
+        var fetchedData = database.liveLessonDao.getLiveLessons()
         Assert.assertTrue(fetchedData.value!!.get(0).topic != null)
     }
 }

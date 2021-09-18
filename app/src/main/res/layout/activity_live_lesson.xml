@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="leviewmodel"
             type="com.example.ulessontest.ui.viewmodels.LiveLessonViewModel" />
@@ -206,18 +207,10 @@
                         android:layout_marginTop="15dp"
                         android:background="@drawable/spinner_bg"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:id="@+id/recy_view"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:id="@+id/cardview"
                         android:padding="20dp"
-                        app:goneIfNotNull="@{leviewmodel.lessons}"
                         android:layout_marginTop="20dp"
                         android:layout_height="wrap_content">
 
@@ -260,6 +253,13 @@
 
 
                     </androidx.cardview.widget.CardView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/recy_view"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
 

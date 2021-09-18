@@ -6,10 +6,8 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.example.ulessontest.R
-import com.example.ulessontest.database.entities.LiveLesson
 import com.example.ulessontest.domains.LiveLessonModel
 
 
@@ -23,6 +21,7 @@ fun ImageView.bindImageWithGlide(src: String){
 */
 @BindingAdapter("goneIfNotNull")
 fun goneIfNotNull(view: View, its: Any?) {
+    Log.e("hjhk", (its==null).toString())
     view.visibility = if (its != null){
         View.GONE
     } else {

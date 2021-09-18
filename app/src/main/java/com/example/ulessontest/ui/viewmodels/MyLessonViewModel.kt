@@ -3,7 +3,6 @@ package com.example.ulessontest.ui.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Transformations
-import com.example.ulessontest.database.AppDatabase
 import com.example.ulessontest.database.entities.asDomainModel
 import com.example.ulessontest.repository.LessonRepository
 import kotlinx.coroutines.CoroutineScope
@@ -13,8 +12,7 @@ import kotlinx.coroutines.launch
 
 class MyLessonViewModel(application: Application) : AndroidViewModel(application) {
 
-    val database = AppDatabase.getInstance(application.applicationContext).lessonDao
-    private val lessonRepository = LessonRepository(database,application)
+    private val lessonRepository = LessonRepository(application)
     private val lessContentk = lessonRepository.mylessons
 
     val lessonsn = Transformations.map(lessContentk) {

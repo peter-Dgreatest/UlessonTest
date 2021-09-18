@@ -20,7 +20,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.ulessontest.database.dao.LessonDao
+import com.example.ulessontest.database.dao.LiveLessonDao
+import com.example.ulessontest.database.dao.MyLessonDao
 import com.example.ulessontest.database.entities.LiveLesson
 import com.example.ulessontest.database.entities.MyLesson
 
@@ -37,7 +38,8 @@ abstract class AppDatabase : RoomDatabase() {
     /**
      * Connects the database to the DAO.
      */
-    abstract val lessonDao: LessonDao
+    abstract val liveLessonDao: LiveLessonDao
+    abstract val myLessonDao: MyLessonDao
 
     /**
      * Define a companion object, this allows us to add functions on the SleepDatabase class.

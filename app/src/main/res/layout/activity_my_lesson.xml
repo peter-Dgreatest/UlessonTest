@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewmodel"
             type="com.example.ulessontest.ui.viewmodels.MyLessonViewModel" />
@@ -40,7 +41,6 @@
                     android:layout_width="match_parent"
                     android:id="@+id/cardview"
                     android:padding="20dp"
-                    app:goneIfNotNull="@{viewmodel.lessonsn}"
                     android:layout_marginTop="20dp"
                     android:layout_height="wrap_content">
 

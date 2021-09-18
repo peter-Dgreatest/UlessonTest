@@ -37,7 +37,7 @@ class MyLessonActivity : AppCompatActivity() {
 
         actionBar?.title = "My Lessons"
 
-        val binding : ActivityMyLessonBinding = DataBindingUtil.setContentView(this,R.layout.activity_my_lesson)
+        val binding : ActivityMyLessonBinding = DataBindingUtil.setContentView<ActivityMyLessonBinding>(this,R.layout.activity_my_lesson)
 
         myLessonViewModel = ViewModelProviders.of(this).get(MyLessonViewModel::class.java)
 
@@ -50,7 +50,15 @@ class MyLessonActivity : AppCompatActivity() {
         binding.lessonRcyView.adapter= lessonAdapter
 
         myLessonViewModel.lessonsn.observe(this, Observer {
-            it?.let {
+            binding.cardview.visibility = if (it != null){
+                if (it?.isEmpty())
+                    View.VISIBLE
+                else
+                    View.GONE
+            } else {
+                View.VISIBLE
+            }
+            it?.apply {
                 lessonAdapter.mListRef=it
                 lessonAdapter.submitList(it)
             }
