@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/androidbg"
     android:layout_height="match_parent"
-    tools:context=".ui.MyLessonActivity"
+    tools:context=".ui.LiveLessonActivity"
     android:orientation="vertical">
 
         <LinearLayout
@@ -22,26 +22,6 @@
             android:orientation="vertical"
             android:layout_margin="20dp"
             >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="wrap_content">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="70dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_keyboard_backspace_24" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:text="My Lessons"
-                    android:textSize="16dp"
-                    android:layout_height="wrap_content"
-                    />
-
-            </LinearLayout>
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -216,21 +196,6 @@
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ALL SUBJECTS  "
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/spinner_bg"
-                        android:textColor="#ffff"
-                        android:padding="4dp"
-                        android:visibility="gone"
-                        style="?android:spinnerItemStyle"
-                        android:ellipsize="marquee"
-                        android:drawableRight="@drawable/ic_expand_more_black_18dp"
-                        android:drawableTint="#ffffff"
-                        android:textSize="16sp"/>
                     <Spinner
                         android:id="@+id/spinner"
                         android:layout_width="wrap_content"
@@ -250,6 +215,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
+                        android:id="@+id/cardview"
                         android:padding="20dp"
                         app:goneIfNotNull="@{leviewmodel.lessons}"
                         android:layout_marginTop="20dp"
@@ -314,7 +280,7 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         app:backgroundTint="#506aac"
-        app:srcCompat="@drawable/ic_baseline_calendar_today_24"/>
+        app:srcCompat="@drawable/calendarr"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

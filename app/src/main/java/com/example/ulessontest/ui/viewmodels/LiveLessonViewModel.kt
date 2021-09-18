@@ -18,12 +18,13 @@ import kotlinx.coroutines.launch
 class LiveLessonViewModel(application: Application) : AndroidViewModel(application) {
 
     val database = AppDatabase.getInstance(application.applicationContext).lessonDao
-    val lessonRepository = LessonRepository(database,application)
-    val lessContent = lessonRepository.livelessons
+    private val lessonRepository = LessonRepository(database,application)
+    private val lessContent = lessonRepository.livelessons
 
     val lessons = Transformations.map(lessContent) {
         lessContent.value?.asDomainModel()
     }
+
 
     private val viewModelJob = SupervisorJob()
 

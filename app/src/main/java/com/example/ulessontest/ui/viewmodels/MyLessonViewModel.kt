@@ -2,13 +2,9 @@ package com.example.ulessontest.ui.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.ulessontest.database.AppDatabase
-import com.example.ulessontest.database.entities.MyLesson
 import com.example.ulessontest.database.entities.asDomainModel
-import com.example.ulessontest.domains.LiveLessonModel
 import com.example.ulessontest.repository.LessonRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,17 +14,14 @@ import kotlinx.coroutines.launch
 class MyLessonViewModel(application: Application) : AndroidViewModel(application) {
 
     val database = AppDatabase.getInstance(application.applicationContext).lessonDao
-    val lessonRepository = LessonRepository(database,application)
-    val lessContent = lessonRepository.mylessons
+    private val lessonRepository = LessonRepository(database,application)
+    private val lessContentk = lessonRepository.mylessons
 
-    val lessons = Transformations.map(lessContent) {
-        lessContent.value?.asDomainModel()
+    val lessonsn = Transformations.map(lessContentk) {
+        lessContentk.value?.asDomainModel()
     }
 
     private val viewModelJob = SupervisorJob()
-
-
-    val navigateToNextActivity = MutableLiveData<Boolean>()
 
     val subjects  = ArrayList<String>()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -46,10 +39,6 @@ class MyLessonViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-
-    fun onNavigate(){
-        navigateToNextActivity.value=true
-    }
 
     override fun onCleared() {
         super.onCleared()

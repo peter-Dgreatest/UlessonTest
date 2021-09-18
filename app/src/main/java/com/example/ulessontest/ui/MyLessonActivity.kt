@@ -1,7 +1,8 @@
 package com.example.ulessontest.ui
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,23 +11,20 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.ulessontest.R
 import com.example.ulessontest.adapters.LessonClickListener
 import com.example.ulessontest.adapters.LessonsAdapter
-import com.example.ulessontest.database.entities.LiveLesson
-import com.example.ulessontest.databinding.ActivityLiveLessonBinding
 import com.example.ulessontest.databinding.ActivityMyLessonBinding
-import com.example.ulessontest.domains.LiveLessonModel
-import com.example.ulessontest.ui.viewmodels.LiveLessonViewModel
 import com.example.ulessontest.ui.viewmodels.MyLessonViewModel
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_my_lesson.*
 
 class MyLessonActivity : AppCompatActivity() {
 
 
-    lateinit var liveLessonViewModel : MyLessonViewModel
-    lateinit var lessonAdapter: LessonsAdapter
+    private lateinit var myLessonViewModel : MyLessonViewModel
+    private lateinit var lessonAdapter: LessonsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_live_lesson)
+        setContentView(R.layout.activity_my_lesson)
 
         // calling the action bar
         // calling the action bar
@@ -41,7 +39,7 @@ class MyLessonActivity : AppCompatActivity() {
 
         val binding : ActivityMyLessonBinding = DataBindingUtil.setContentView(this,R.layout.activity_my_lesson)
 
-        liveLessonViewModel = ViewModelProviders.of(this).get(MyLessonViewModel::class.java)
+        myLessonViewModel = ViewModelProviders.of(this).get(MyLessonViewModel::class.java)
 
         lessonAdapter= LessonsAdapter(LessonClickListener{
                 lessonId, lessonTitle ->
@@ -51,16 +49,28 @@ class MyLessonActivity : AppCompatActivity() {
 
         binding.lessonRcyView.adapter= lessonAdapter
 
-        liveLessonViewModel.lessons.observe(this, Observer {
+        myLessonViewModel.lessonsn.observe(this, Observer {
             it?.let {
-                lessonAdapter.submitList(it as List<LiveLessonModel>)
+                lessonAdapter.mListRef=it
+                lessonAdapter.submitList(it)
             }
         })
 
 
+        binding.spinner.onItemSelectedListener=  object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                (binding.lessonRcyView.adapter as LessonsAdapter).filter.filter(spinner.selectedItem.toString())
+                // return true
+            }
+
+        }
 
 
-        binding.viewmodel = liveLessonViewModel
+        binding.viewmodel = myLessonViewModel
 
     }
 

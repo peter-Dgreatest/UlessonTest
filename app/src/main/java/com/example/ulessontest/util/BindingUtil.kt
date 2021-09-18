@@ -2,6 +2,7 @@ package com.example.ulessontest.util
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.databinding.BindingAdapter
@@ -21,12 +22,11 @@ fun ImageView.bindImageWithGlide(src: String){
 * Binding adapter used to hide the cardview once data is available
 */
 @BindingAdapter("goneIfNotNull")
-fun goneIfNotNull(view: View, its: List<LiveLessonModel>?) {
-    view.visibility = if (its == null){
+fun goneIfNotNull(view: View, its: Any?) {
+    view.visibility = if (its != null){
         View.GONE
     } else {
-        if (its?.size!! <1)  View.GONE
-        else View.VISIBLE
+        View.VISIBLE
     }
 }
 

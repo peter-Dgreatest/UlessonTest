@@ -15,150 +15,98 @@
         android:layout_height="match_parent"
         tools:context=".ui.MyLessonActivity">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="20dp">
+            android:layout_height="match_parent">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="20dp">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="70dp"
-                    android:layout_marginTop="10dp"
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+                    android:textColor="#ffff"
+                    android:padding="4dp"
+                    app:bindSpinner="@{viewmodel.subjects}"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/spinner_bg"/>
 
-                <TextView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:text="My Lessons"
-                    android:textSize="16dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ALL SUBJECTS  "
-                android:layout_marginTop="15dp"
-                android:background="@drawable/spinner_bg"
-                android:textColor="#ffff"
-                android:padding="4dp"
-                android:visibility="gone"
-                style="?android:spinnerItemStyle"
-                android:ellipsize="marquee"
-                android:drawableRight="@drawable/ic_expand_more_black_18dp"
-                android:drawableTint="#ffffff"
-                android:textSize="16sp"/>
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ffff"
-                android:padding="4dp"
-                app:bindSpinner="@{viewmodel.subjects}"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/spinner_bg"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:padding="20dp"
-                android:id="@+id/lesson_nill"
-                app:goneIfNotNull="@{viewmodel.lessons}"
-                android:layout_marginTop="20dp"
-                android:layout_height="wrap_content">
+                    android:id="@+id/cardview"
+                    android:padding="20dp"
+                    app:goneIfNotNull="@{viewmodel.lessonsn}"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
 
                 <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="50dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/group4"
+                            android:layout_margin="20dp"
+                            android:layout_gravity="center_horizontal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center"
+                            android:fontFamily="@font/itimregular"
+                            android:text="Your timetable is empty"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/mulishregular"
+                            android:text="Click remind me to add lessons to your timetable"
+                            android:textSize="19sp" />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="50dp">
+                    android:id="@+id/lesson_rcy_view"
+                    android:layout_marginTop="20dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_height="wrap_content" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/group4"
-                        android:layout_margin="20dp"
-                        android:layout_gravity="center_horizontal" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center"
-                        android:fontFamily="@font/itimregular"
-                        android:text="Your timetable is empty"
-                        android:textSize="26sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:fontFamily="@font/mulishregular"
-                        android:text="Click remind me to add lessons to your timetable"
-                        android:textSize="19sp" />
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:id="@+id/lesson_rcy_view"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/mask_group"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/mulishregular"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:textColor="#ffffff"
-                android:text="ADD LIVE LESSONS"
-                android:drawableLeft="@drawable/group"
-                android:drawableRight="@drawable/group2"
-                android:background="@drawable/button_shape" />
-
-            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:id="@+id/sp_department"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:drawableEnd="@android:drawable/arrow_down_float"
-                android:hint="ALL SUBJECTS  "
-                android:paddingBottom="0dp"
-                android:paddingLeft="0dp"
-                android:paddingRight="30dp"
-                android:paddingTop="0dp"
-                android:textColor="#292929"
-                android:textColorHint="#434343"
-                android:textStyle="bold"
-                app:met_baseColor="#504f4f"
-                android:background="@drawable/spinner_bg"
-                android:backgroundTint="@color/colorPrimaryDark"
-                app:met_primaryColor="#353434"
-                app:met_textColorHint="#333333"
-                app:met_floatingLabel="none" />
-
-
-        </LinearLayout>
+                <Button
+                    android:id="@+id/mask_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/mulishregular"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:textColor="#ffffff"
+                    android:text="ADD LIVE LESSONS"
+                    android:drawableLeft="@drawable/group"
+                    android:drawableRight="@drawable/group2"
+                    android:background="@drawable/button_shape" />
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 </layout>
