@@ -110,7 +110,7 @@ class LessonsAdapter(val clickListener: LessonClickListener, val pageType: Strin
                 val charString = charSequence.toString()
 
                 val list = mutableListOf<LiveLessonModel>()
-                if(!charString.isNullOrEmpty()) {
+                if(!charString.isNullOrEmpty() || !charString.contains("All Subjects")) {
                     mListRef?.let {
                         list.addAll(it.filter {
                             it.subject.contains(charString)

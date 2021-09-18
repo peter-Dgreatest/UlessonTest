@@ -34,6 +34,7 @@ class MyLessonActivity : AppCompatActivity() {
 
         // showing the back button in action bar
         actionBar?.setDisplayHomeAsUpEnabled(true)
+        
 
         actionBar?.title = "My Lessons"
 
