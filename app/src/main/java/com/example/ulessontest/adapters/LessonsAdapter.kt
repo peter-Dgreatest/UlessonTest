@@ -1,5 +1,6 @@
 package com.example.ulessontest.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -110,7 +111,7 @@ class LessonsAdapter(val clickListener: LessonClickListener, val pageType: Strin
                 val charString = charSequence.toString()
 
                 val list = mutableListOf<LiveLessonModel>()
-                if(!charString.isNullOrEmpty() || !charString.contains("All Subjects")) {
+                if(!charString.isNullOrEmpty() && charString != "All Subjects") {
                     mListRef?.let {
                         list.addAll(it.filter {
                             it.subject.contains(charString)
